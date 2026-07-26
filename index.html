@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Reyes — CV</title>
+<meta name="description" content="Software engineer CV — experience, skills, and projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0D1117;
+  --bg-2:#161B22;
+  --border:#30363D;
+  --text:#C9D1D9;
+  --text-dim:#8B949E;
+  --green:#3FB950;
+  --green-dim:#238636;
+  --blue:#58A6FF;
+  --purple:#BC8CFF;
+  --orange:#DB6D28;
+  --font-mono:'JetBrains Mono', monospace;
+  --font-sans:'Inter', sans-serif;
+  --radius:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-sans);
+  line-height:1.65;
+}
+a{color:var(--blue);text-decoration:none;}
+a:hover{text-decoration:underline;}
+:focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+@media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+
+/* ---------- Top bar ---------- */
+.topbar{
+  border-bottom:1px solid var(--border);
+  background:var(--bg-2);
+  position:sticky; top:0; z-index:10;
+}
+.topbar-inner{
+  max-width:900px;margin:0 auto;padding:14px 24px;
+  display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:13px; color:var(--text-dim);
+}
+.topbar-inner svg{flex-shrink:0;}
+.topbar-inner .path{color:var(--text);}
+
+/* ---------- Header ---------- */
+header.profile{padding:56px 0 36px; display:flex; gap:28px; align-items:center; flex-wrap:wrap;}
+.avatar{
+  width:112px; height:112px; border-radius:50%;
+  background:linear-gradient(135deg, var(--green-dim), var(--blue));
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-size:38px; font-weight:700; color:var(--bg);
+  flex-shrink:0; border:3px solid var(--border);
+}
+.profile-text h1{font-size:28px; font-weight:700; margin-bottom:4px;}
+.profile-text .handle{color:var(--text-dim); font-family:var(--font-mono); font-size:14px; margin-bottom:10px;}
+.profile-text .tagline{font-family:var(--font-mono); font-size:14px; color:var(--green);}
+.profile-text .tagline::before{content:"> "; color:var(--text-dim);}
+.contact-links{display:flex; gap:14px; margin-top:14px; flex-wrap:wrap;}
+.contact-links a{
+  display:flex; align-items:center; gap:6px;
+  font-size:13px; color:var(--text-dim);
+  border:1px solid var(--border); border-radius:6px; padding:6px 12px;
+  transition:border-color .2s, color .2s;
+}
+.contact-links a:hover{border-color:var(--blue); color:var(--blue); text-decoration:none;}
+
+/* ---------- Nav tabs ---------- */
+nav.tabs{
+  display:flex; gap:2px; border-bottom:1px solid var(--border); margin-bottom:40px; flex-wrap:wrap;
+}
+nav.tabs a{
+  font-family:var(--font-mono); font-size:13.5px; color:var(--text-dim);
+  padding:12px 16px; border-bottom:2px solid transparent;
+}
+nav.tabs a:hover{color:var(--text); text-decoration:none; border-color:var(--border);}
+
+/* ---------- Section shell (readme-style) ---------- */
+section{margin-bottom:56px; scroll-margin-top:70px;}
+.file-card{
+  border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--bg-2);
+}
+.file-head{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 16px; border-bottom:1px solid var(--border);
+  font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim);
+}
+.file-body{padding:22px 24px;}
+h2.section-title{font-size:20px; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px;}
+h2.section-title svg{color:var(--text-dim);}
+
+/* ---------- About ---------- */
+.about-body p{margin-bottom:12px; color:var(--text);}
+.about-body p:last-child{margin-bottom:0;}
+
+/* ---------- Experience (commit-log style) ---------- */
+.commit{
+  display:flex; gap:16px; padding:18px 0; border-bottom:1px solid var(--border);
+}
+.commit:last-child{border-bottom:none;}
+.commit-dot{
+  width:10px; height:10px; border-radius:50%; background:var(--green); margin-top:6px; flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(63,185,80,0.15);
+}
+.commit-info{flex:1;}
+.commit-title{font-weight:600; font-size:15px; margin-bottom:2px;}
+.commit-meta{font-family:var(--font-mono); font-size:12px; color:var(--text-dim); margin-bottom:8px; display:flex; gap:10px; flex-wrap:wrap;}
+.commit-meta .hash{color:var(--purple);}
+.commit-desc{font-size:14px; color:var(--text); margin-bottom:8px;}
+.commit-desc ul{padding-inline-start:18px;}
+.commit-desc li{margin-bottom:4px;}
+.commit-tags{display:flex; gap:6px; flex-wrap:wrap;}
+.tag{
+  font-family:var(--font-mono); font-size:11px; color:var(--blue);
+  background:rgba(88,166,255,0.1); border:1px solid rgba(88,166,255,0.3);
+  padding:2px 8px; border-radius:999px;
+}
+
+/* ---------- Skills (contribution-graph style) ---------- */
+.skill-row{display:flex; align-items:center; gap:14px; margin-bottom:16px;}
+.skill-row:last-child{margin-bottom:0;}
+.skill-label{width:130px; flex-shrink:0; font-size:13.5px; font-weight:500;}
+.skill-cells{display:flex; gap:3px;}
+.cell{width:13px; height:13px; border-radius:3px; background:var(--border);}
+.cell.l1{background:#0E4429;}
+.cell.l2{background:#006D32;}
+.cell.l3{background:#26A641;}
+.cell.l4{background:#39D353;}
+.skill-legend{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--text-dim); margin-top:18px; font-family:var(--font-mono);}
+.skill-legend .cell{width:11px; height:11px;}
+
+.stack-chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:22px;}
+.chip{
+  font-family:var(--font-mono); font-size:12px; padding:5px 12px; border-radius:6px;
+  border:1px solid var(--border); color:var(--text-dim);
+}
+
+/* ---------- Projects (repo-card style) ---------- */
+.repo-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.repo-card{
+  border:1px solid var(--border); border-radius:var(--radius); padding:18px 20px; background:var(--bg-2);
+  transition:border-color .2s;
+}
+.repo-card:hover{border-color:var(--blue);}
+.repo-name{font-family:var(--font-mono); font-size:14.5px; color:var(--blue); font-weight:500; margin-bottom:8px; display:block;}
+.repo-desc{font-size:13.5px; color:var(--text-dim); margin-bottom:14px; min-height:40px;}
+.repo-meta{display:flex; align-items:center; gap:16px; font-size:12px; color:var(--text-dim);}
+.repo-meta span{display:flex; align-items:center; gap:5px;}
+.lang-dot{width:10px; height:10px; border-radius:50%; display:inline-block;}
+
+/* ---------- Education ---------- */
+.edu-item{display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--border); flex-wrap:wrap; gap:6px;}
+.edu-item:last-child{border-bottom:none;}
+.edu-item .degree{font-weight:600; font-size:14.5px;}
+.edu-item .school{font-size:13px; color:var(--text-dim);}
+.edu-item .years{font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim);}
+
+/* ---------- Footer ---------- */
+footer{
+  border-top:1px solid var(--border); padding:32px 0 60px; margin-top:20px;
+  text-align:center; font-family:var(--font-mono); font-size:12.5px; color:var(--text-dim);
+}
+footer a{color:var(--text-dim);}
+footer a:hover{color:var(--blue);}
+
+@media (max-width:640px){
+  .repo-grid{grid-template-columns:1fr;}
+  .skill-label{width:100px; font-size:12.5px;}
+  header.profile{padding-top:36px;}
+  .avatar{width:88px; height:88px; font-size:30px;}
+  .profile-text h1{font-size:23px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    <span class="path">Heba Saed / <strong>cv</strong></span>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="profile">
+    <div class="avatar">HS</div>
+    <div class="profile-text">
+      <h1>Heba Saed</h1>
+      <div class="handle">@Heba Saed · Senior Web Developer</div>
+      <div class="tagline">building backend systems and Websites</div>
+      <div class="contact-links">
+        <a href="mailto:jordan@example.com">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2 0v.2l6 4.5 6-4.5V4H2zm12 1.6-5.4 4.05a1 1 0 0 1-1.2 0L2 5.6V12h12V5.6z"/></svg>
+          heba.saed9890@gmail.com
+        </a>
+        <a href="https://github.com/jordanreyes" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+           https://hebasaed.github.io/github.io/
+          
+         
+ 
+        </a>
+       <!--- <a href="https://linkedin.com/in/jordanreyes" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.15C0 .52.53 0 1.19 0h13.62C15.47 0 16 .52 16 1.15v13.7c0 .63-.53 1.15-1.19 1.15H1.19C.53 16 0 15.48 0 14.85V1.15zM4.75 13.4V6.17H2.4v7.23h2.35zM3.58 5.18c.82 0 1.33-.54 1.33-1.22-.02-.7-.51-1.22-1.31-1.22s-1.33.53-1.33 1.22c0 .68.51 1.22 1.3 1.22h.01zM7.12 13.4V9.35c0-.22.02-.43.08-.59.18-.44.58-.9 1.27-.9.9 0 1.26.68 1.26 1.68v3.86h2.35V9.26c0-2.17-1.16-3.18-2.71-3.18-1.25 0-1.8.69-2.11 1.17h.02V6.17H4.93c.03.66 0 7.23 0 7.23h2.19z"/></svg>
+          linkedin.com/in/jordanreyes
+        </a>--->
+        
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a href="#about">PROFESSIONAL SUMMARY</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+  </nav>
+
+  <section id="about">
+    <div class="file-card">
+      <div class="file-head">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M2 1.75C2 .78 2.78 0 3.75 0h6.5c.966 0 1.75.78 1.75 1.75v12.5A1.75 1.75 0 0 1 10.25 16h-6.5A1.75 1.75 0 0 1 2 14.25V1.75zM3.75 1.5a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-6.5z"/></svg>
+        PROFESSIONAL SUMMARY
+      </div>
+      <div class="file-body about-body">
+        <p>•Backend developer with hands-on experience across native PHP, CodeIgniter, and Laravel, building CRM systems and business websites end-to-end — from requirements analysis through deployment.</p>
+        <p>•Skilled in relational database design, performance troubleshooting, and translating customer requirements into working systems.</p>
+        <p> •Practical experience implementing and customizing CRM platforms, including Zoho CRM and HubSpot, to support sales, project, and customer-management workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9zm10.5-1H4.5a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8V1.5zm0 13H4.5a1 1 0 1 0 0 2h8v-2z"/></svg>
+      Experience
+    </h2>
+    <div class="file-card">
+      <div class="file-body" style="padding:8px 24px;">
+
+        <div class="commit">
+          <div class="commit-dot"></div>
+          <div class="commit-info">
+            <div class="commit-title">PHP Web Developer — Click Its</div>
+            <!--<div class="commit-meta"><span class="hash">#current</span><span>Mar 2023 — Present</span><span>Remote</span></div>-->
+            <div class="commit-desc">
+              <ul>
+                <li>Developed complete CRM systems using native PHP and CodeIgniter, including Sales, Purchasing, Inventory, HR, Stock, and Invoice modules.</li>
+                <li>Designed and optimized MySQL databases and SQL queries to support core CRM functionality.</li>
+                <li>Analyzed customer requirements and translated them into functional system features, managing expectations through clear, ongoing communication</li>
+                <li> Troubleshot, optimized, and managed web projects end-to-end.</li>
+              </ul>
+            </div>
+            <div class="commit-tags">
+              <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Websites</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="commit">
+          <div class="commit-dot" style="background:var(--blue); box-shadow:0 0 0 3px rgba(88,166,255,0.15);"></div>
+          <div class="commit-info">
+            <div class="commit-title">PHP Web Developer — Click Group</div>
+           <!---- <div class="commit-meta"><span class="hash">#previous</span><span>Jul 2020 — Feb 2023</span><span>Austin, TX</span></div>-->
+            <div class="commit-desc">
+              <ul>
+                <li>•Built and maintained the click-group company website.</li>
+                <li>•Developed using native PHP and CodeIgniter with HTML, CSS, JavaScript, and Bootstrap on the frontend, and MySQL for data storage.</li>
+                
+              </ul>
+            </div>
+            <div class="commit-tags">
+              <span class="tag">https://www.click-group.com/</span>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="commit">
+          <div class="commit-dot" style="background:var(--purple); box-shadow:0 0 0 3px rgba(188,140,255,0.15);"></div>
+          <div class="commit-info">
+            <div class="commit-title">Backend Developer —  Power</div>
+            <!--<div class="commit-meta"><span class="hash">#internship</span><span>Jun 2019 — Aug 2019</span><span>Austin, TX</span></div>-->
+            <div class="commit-desc">
+              <ul>
+                <li>Built and maintained the Power company website and additional websites for other client companies.</li>
+                <li>Developed using native PHP and CodeIgniter with HTML, CSS, JavaScript, and Bootstrap on the frontend, and MySQL for data storage.</li>
+              </ul>
+            </div>
+            <div class="commit-tags">
+              <span class="tag">power-egy.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="commit">
+          <div class="commit-dot" style="background:var(--blue); box-shadow:0 0 0 3px rgba(88,166,255,0.15);"></div>
+          <div class="commit-info">
+            <div class="commit-title">CRM Implementation — Online Courses Company</div>
+           <!---- <div class="commit-meta"><span class="hash">#previous</span><span>Jul 2020 — Feb 2023</span><span>Austin, TX</span></div>-->
+            <div class="commit-desc">
+              <ul>
+                <li>Implemented a CRM solution using Zoho CRM and HubSpot CRM, including lead management and conversion into contacts and accounts.</li>
+                <li>Designed the sales pipeline and deal stages, and automated project creation upon closed-won deals.</li>
+                <li>Integrated the CRM with Zoho Projects, creating and tracking tasks through to project execution.</li>
+                <li> Generated dashboards and reports to support management decision-making.</li>
+                
+              </ul>
+            </div>
+             
+            
+          </div>
+        </div>
+
+        <div class="commit">
+          <div class="commit-dot" style="background:var(--blue); box-shadow:0 0 0 3px rgba(88,166,255,0.15);"></div>
+          <div class="commit-info">
+            <div class="commit-title">CRM Data Analysis Project</div>
+           <!---- <div class="commit-meta"><span class="hash">#previous</span><span>Jul 2020 — Feb 2023</span><span>Austin, TX</span></div>-->
+            <div class="commit-desc">
+              <ul>
+                <li>Built SQL queries in MySQL to extract customer, sales, and lead data</li>
+                <li>Connected MySQL databases to Power BI for real-time dashboard reporting.</li>
+                <li>Created CRM dashboards analyzing customer retention, conversion rates, and sales trends.</li>
+                <li> Delivered business insights through KPI reporting and data visualization.</li>
+                
+              </ul>
+            </div>
+             
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 1.1a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4l8-8zM9.9 2.5 3 9.4 6.6 13l6.9-6.9-3.6-3.6z"/></svg>
+      Skills
+    </h2>
+    <div class="file-card">
+      <div class="file-body">
+        <div class="skill-row">
+          <span class="skill-label">PHP 8</span>
+          <div class="skill-cells">
+            <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Laravel & CodeIgniter</span>
+          <div class="skill-cells">
+            <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">REST API, OOP, MVC</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">HTML5, CSS, JavaScript</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Bootstrap</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+<div class="skill-row">
+          <span class="skill-label">Zoho CRM, HubSpot CRM, Salesforce CRM</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">Git, GitHub, Visual Studio, SQLyog</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+         <div class="skill-row">
+          <span class="skill-label">ChatGPT, Claude, Grok,
+Canva, Flow, HeyGen</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+         <div class="skill-row">
+          <span class="skill-label">AI-assisted website design & development</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+        <div class="skill-row">
+          <span class="skill-label">Social media marketing</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+
+        <div class="skill-row">
+          <span class="skill-label">Marketing video creation</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+
+        <div class="skill-row">
+          <span class="skill-label">Poster & graphic design</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+
+        <div class="skill-row">
+          <span class="skill-label">Facebook Ads management & page boosting</span>
+          <div class="skill-cells">
+           <div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l4"></div><div class="cell l3"></div><div class="cell l4"></div><div class="cell l4"></div>
+          </div>
+        </div>
+
+        <div class="skill-legend">
+          <span>less</span>
+          <div class="cell" style="background:var(--border);"></div>
+          <div class="cell l1"></div><div class="cell l2"></div><div class="cell l3"></div><div class="cell l4"></div>
+          <span>more</span>
+        </div>
+        <div class="stack-chips">
+          <span class="chip">AI</span><span class="chip">HTML</span><span class="chip">PHP</span>
+          <span class="chip">MySQL</span><span class="chip">AWS</span><span class="chip">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9z"/></svg>
+      Projects
+    </h2>
+    <div class="repo-grid">
+      <div class="repo-card">
+        <a class="repo-name" href="https://hebasaed.github.io/clinic-website/">Clinic Website</a>
+        
+        <p class="repo-desc">This is an example of Website Design for a clinic to Choose the Doctor and deserve appointment with him/her </p>
+        <div class="repo-meta">
+          <span><span class="lang-dot" style="background:#00ADD8;"></span>PHP</span>
+          <span>⭐ 100</span>
+        </div>
+      </div>
+      <div class="repo-card">
+        <a class="repo-name" href="https://hebasaed.github.io/perfume/">Perfumes</a>
+        <p class="repo-desc">This is a Design for website to buy perfumes with prices</p>
+        <div class="repo-meta">
+          <span><span class="lang-dot" style="background:#3178C6;"></span>PHP</span>
+          <span>⭐ 100</span>
+        </div>
+      </div>
+      <div class="repo-card">
+        <a class="repo-name" href="https://www.click-group.com/">Click-Group</a>
+        <p class="repo-desc">Click Group Company for software and Hardware Products</p>
+        <div class="repo-meta">
+          <span><span class="lang-dot" style="background:#00ADD8;"></span>PHP</span>
+          <span>⭐ 100</span>
+        </div>
+      </div>
+      <div class="repo-card">
+        <a class="repo-name" href="power-egy.com">Power</a>
+        <p class="repo-desc">Power Company Website</p>
+        <div class="repo-meta">
+          <span><span class="lang-dot" style="background:#8B949E;"></span>PHP</span>
+          <span>⭐ 100</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0 0 4.5 8 9l6.5-3.65V9h1.5V4.5L8 0zM3 8.02V11c0 1.1 2.24 3 5 3s5-1.9 5-3V8.02L8 10.5 3 8.02z"/></svg>
+      Education
+    </h2>
+    <div class="file-card">
+      <div class="file-body">
+        <div class="edu-item">
+          <div>
+            <div class="degree">B.S. in Computer Science</div>
+            <div class="school">Computer & Information Science
+Helwan University</div>
+          </div>
+          <div class="years">2008 — 2011</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built with HTML, CSS, and no framework. Hosted on GitHub Pages.</p>
+    <p style="margin-top:6px;">© 2026 Heba Saed</p>
+  </footer>
+</div>
+
+</body>
+</html>
